@@ -112,13 +112,6 @@ Puppet::Type.newtype(:f5_pool) do
       'quorum' => '0',
       'type' => 'MONITOR_RULE_TYPE_AND_LIST' }"
 
-    munge do |value|
-      # Make sure monitor_templates is converted to an array to aid with
-      # matching
-      value["monitor_templates"] = Array(value["monitor_templates"])
-      value
-    end
-
     def should_to_s(newvalue)
       newvalue.inspect
     end
